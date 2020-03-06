@@ -2,8 +2,8 @@ package Test.AdventureGameTest.src.org.academiadecodigo.apiores;
 
 public class PlayerPosition {
 
-    int currentWidth;
-    int currentHeight;
+    private int currentWidth;
+    private  int currentHeight;
 
     Room room = new Room();
 
@@ -16,19 +16,19 @@ public class PlayerPosition {
     public void updatePosition (String command){
 
         if (command.equals("n")){
-            if(currentHeight == room.roomHeight){
+            if(currentHeight == 1){
                 System.out.println("There's a wall in front of you! You can't advance!");
             } else {
-               currentHeight++;
+               currentHeight--;
                 System.out.println("You moved North.");
             }
         }
 
         if (command.equals("s")){
-            if(currentHeight == 1){
+            if(currentHeight == room.roomHeight){
                 System.out.println("There's a wall in front of you! You can't advance!");
             } else {
-                currentHeight--;
+                currentHeight++;
                 System.out.println("You moved South.");
             }
         }
@@ -50,5 +50,13 @@ public class PlayerPosition {
                 System.out.println("You moved West.");
             }
         }
+    }
+
+    public int getCurrentHeight() {
+        return currentHeight;
+    }
+
+    public int getCurrentWidth() {
+        return currentWidth;
     }
 }

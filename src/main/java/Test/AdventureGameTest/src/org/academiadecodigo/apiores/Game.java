@@ -13,8 +13,9 @@ import java.util.Set;
 
 public class Game {
 
-    PlayerPosition playerPosition = new PlayerPosition(2, 2);
-    Set<String> bag = new HashSet<String>();
+    private PlayerPosition playerPosition = new PlayerPosition(2, 2);
+    private CellVerification cellVerification = new CellVerification();
+    private HashSet<String> bag = new HashSet<String>();
 
     public void init() {
 
@@ -35,11 +36,7 @@ public class Game {
                     Directions.GO_WEST.getInput().equals(command)) {
                 playerPosition.updatePosition(command);
             } else {
-
-                if (bag.contains("sss")) {
-                    System.out.println("lol");
-                    System.out.println(bag.size());
-                }
+                cellVerification.verify(command, playerPosition, this);
             }
         }
     }
@@ -47,7 +44,10 @@ public class Game {
 
     public void updateBag(String item){
         bag.add(item);
+    }
 
+    public  Set<String> getBag(){
+        return bag;
     }
 
 

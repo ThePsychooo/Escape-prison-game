@@ -16,6 +16,8 @@ public class Game {
     private PlayerPosition playerPosition = new PlayerPosition(2, 2);
     private CellVerification cellVerification = new CellVerification();
     private HashSet<String> bag = new HashSet<String>();
+    private boolean pushWadrobe = false;
+    private boolean openDoor = false;
 
     public void init() {
 
@@ -50,5 +52,19 @@ public class Game {
         return bag;
     }
 
+    public void pushWardrobe(){
+        pushWadrobe = true;
+    }
 
+    public boolean getPushWadrobe(){
+        return pushWadrobe;
+    }
+
+    public void openDoor(){
+        openDoor = true;
+    }
+
+    public boolean getOpenDoor(){
+        return openDoor;
+    }
 }

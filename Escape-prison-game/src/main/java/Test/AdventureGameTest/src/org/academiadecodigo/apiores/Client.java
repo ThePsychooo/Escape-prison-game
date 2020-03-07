@@ -19,7 +19,7 @@ public class Client implements Runnable {
     public Client(String username) {
         this.username = username;
         try {
-            client = new Socket("192.168.1.110", 8020);
+            client = new Socket("192.168.1.105", 8020);
             ExecutorService executorService = Executors.newCachedThreadPool();
             executorService.submit(this);
             sendStartingMessage();

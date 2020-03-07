@@ -37,16 +37,17 @@ public class Server {
             while (true) {
                 client = server.accept();
                 executorService.submit(new socketThread());
-                if (!player1Joined){
-                        try {
-                            PrintWriter output = new PrintWriter(store.elementAt(0).getOutputStream(), true);
-                            output.println("Waiting for a second player.");
-                            player1Joined = true;
-                            output.flush();
-                        } catch (Exception e) {
-                            System.out.println();
-                        }
+
+                if (!player1Joined) {
+                    PrintWriter output = new PrintWriter(store.elementAt(0).getOutputStream(), true);
+                    output.println("Waiting for a second player.");
+                    player1Joined = true;
+                    output.flush();
+                    System.out.println();
+                    player1Joined = true;
                 }
+            }
+
               /*  if (store.size() == 1){
                     for (int i = 0; i < store.size(); i++) {
                         try {
@@ -59,8 +60,7 @@ public class Server {
                     }
                 }*/
 
-            }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.getMessage();
         }
     }

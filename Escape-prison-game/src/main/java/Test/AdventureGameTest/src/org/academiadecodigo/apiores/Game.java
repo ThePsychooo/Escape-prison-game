@@ -1,11 +1,6 @@
 package Test.AdventureGameTest.src.org.academiadecodigo.apiores;
 import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Commands.Directions;
-import org.academiadecodigo.apiores.Main;
 import org.academiadecodigo.bootcamp.Prompt;
-import org.academiadecodigo.bootcamp.InputScanner;
-import org.academiadecodigo.bootcamp.scanners.menu.MenuInputScanner;
-import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
-
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 
 import java.util.HashSet;
@@ -21,6 +16,7 @@ public class Game {
     private boolean openEnvelope = false;
     private boolean openWardrobe = false;
     private boolean openVault = false;
+    private Client client;
 
     public void init() {
 
@@ -52,8 +48,9 @@ public class Game {
 
         Prompt prompt = new Prompt(System.in, System.out);
         StringInputScanner usernameInput = new StringInputScanner();
-        usernameInput.setMessage("How do you want to be called, prisoner?\n");
+        usernameInput.setMessage("The game is about to start. How do you want to be called prisoner?\n");
         String username = prompt.getUserInput(usernameInput);
+        client = new Client(username);
         if (username.toLowerCase().equals("jojo")){
             System.out.println("Jojo? I once had and MC with that name. I prefer not to remember those days...");
         } else {

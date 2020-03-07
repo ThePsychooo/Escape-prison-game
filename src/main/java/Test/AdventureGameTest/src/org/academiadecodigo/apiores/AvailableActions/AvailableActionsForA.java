@@ -23,9 +23,23 @@ public class AvailableActionsForA {
             case "use chair":
                 System.out.println("It's nice to get a good rest.");
                 break;
+            case "sit":
+                System.out.println("It's nice to get a good rest.");
+                break;
+            case "sit on chair":
+                System.out.println("It's nice to get a good rest.");
+                break;
             case "open chair":
                 System.out.println("You cannot do that!");
                 break;
+            case "use flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("No need to use flip flops here.");
+                    break;
+                }else{
+                    System.out.println("You don't have this item.");
+                    break;
+                }
             case "read chair":
                 System.out.println("You cannot do that!");
                 break;
@@ -71,6 +85,14 @@ public class AvailableActionsForA {
                     System.out.println("You do not have this item");
                     break;
                 }
+            case "check flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("There's a hand written G under both of them.\nI wonder what that means...");
+                    break;
+                }else {
+                    System.out.println("You don't have this item.");
+                    break;
+                }
             case "read newspaper":
                 if (game.getBag().contains("newspaper")) {
                     System.out.println("THE END IS NEAR!\n" +
@@ -94,6 +116,7 @@ public class AvailableActionsForA {
             case "use golden key":
                 if(game.getBag().contains("golden key")){
                     System.out.println("Not useful in this situation");
+                    break;
                 } else {
                     System.out.println("You do not have this item");
                     break;
@@ -104,10 +127,12 @@ public class AvailableActionsForA {
             case "check bag":
                 if(game.getBag().isEmpty()){
                     System.out.println("Your bag is Empty.");
+                    break;
+                } else {
+                    System.out.println("Items in your bag:");
+                    System.out.println(game.getBag().toString());
+                    break;
                 }
-                System.out.println("Items in your bag:");
-                System.out.println(game.getBag().toString());
-                break;
             case "i":
                 System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
                         " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +

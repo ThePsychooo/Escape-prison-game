@@ -19,6 +19,8 @@ public class Game {
     private boolean pushWadrobe = false;
     private boolean openDoor = false;
     private boolean openEnvelope = false;
+    private boolean openWardrobe = false;
+    private boolean openVault = false;
 
     public void init() {
 
@@ -93,5 +95,19 @@ public class Game {
         openEnvelope = true;
     }
 
+    public boolean getOpenWardrobe(){
+        return openWardrobe;
+    }
 
+    public void openWardrobe(){
+        openWardrobe = true;
+    }
+
+    public boolean getOpenVault(){
+        return openVault;
+    }
+
+    public void openVault(){
+        openVault = true;
+    }
 }

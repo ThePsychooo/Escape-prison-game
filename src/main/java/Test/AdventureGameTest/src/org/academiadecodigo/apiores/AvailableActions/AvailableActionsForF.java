@@ -6,6 +6,7 @@ public class AvailableActionsForF {
             case "look":
                 if (game.getBag().contains("flip flops")) {
                     System.out.println("Nothing interesting in front of you.");
+                    break;
                 } else {
                     System.out.println("There's a pair of flip flops on the floor.\nI wonder if it's your number...");
                     break;
@@ -86,10 +87,12 @@ public class AvailableActionsForF {
             case "use golden key":
                 if(game.getBag().contains("golden key")){
                     System.out.println("Not useful in this situation");
+                    break;
                 } else {
                     System.out.println("You do not have this item");
                     break;
                 }
+
             case "use flip flops":
                 System.out.println("No need to use flip flops here.");
                 break;
@@ -99,16 +102,18 @@ public class AvailableActionsForF {
             case "read flip flops":
                 System.out.println("You cannot do that!");
                 break;
-            case "search flip flops":
+            case "check flip flops":
                 System.out.println("There's a hand written G under both of them.\nI wonder what that means...");
                 break;
             case "check bag":
                 if(game.getBag().isEmpty()){
                     System.out.println("Your bag is Empty.");
+                    break;
+                } else {
+                    System.out.println("Items in your bag:");
+                    System.out.println(game.getBag().toString());
+                    break;
                 }
-                System.out.println("Items in your bag:");
-                System.out.println(game.getBag().toString());
-                break;
             case "i":
                 System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
                         " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +

@@ -10,13 +10,11 @@ public class AvailableActionsForC {
                 System.out.println("There's nothing to get");
                 break;
             case "use calendar":
-                System.out.println("Do you want to read what's in the calendar?");
+                System.out.println("Maybe you want to read what's in the calendar?");
                 break;
-            case "yes":
+
+            case "check calendar":
                 System.out.println("It's a calendar from April 2020.\nThere's a red circle around day 17.\nI wonder what will happen in that day...");
-                break;
-            case "no":
-                System.out.println("Ok. But maybe you should...\nIt's always good to know what day it is today.");
                 break;
             case "open calendar":
                 System.out.println("You cannot do that!");
@@ -86,6 +84,7 @@ public class AvailableActionsForC {
             case "use golden key":
                 if(game.getBag().contains("golden key")){
                     System.out.println("Not useful in this situation");
+                    break;
                 } else {
                     System.out.println("You do not have this item");
                     break;
@@ -93,16 +92,34 @@ public class AvailableActionsForC {
             case "read calendar":
                 System.out.println("It's a calendar from April 2020.\nThere's a red circle around day 17.\nI wonder what will happen in that day...");
                 break;
+            case "check flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("There's a hand written G under both of them.\nI wonder what that means...");
+                    break;
+                }else {
+                    System.out.println("You don't have this item.");
+                    break;
+                }
             case "search calendar":
                 System.out.println("Nothing interesting");
                 break;
+            case "use flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("No need to use flip flops here.");
+                    break;
+                }else{
+                    System.out.println("You don't have this item.");
+                    break;
+                }
             case "check bag":
                 if(game.getBag().isEmpty()){
                     System.out.println("Your bag is Empty.");
+                    break;
+                } else {
+                    System.out.println("Items in your bag:");
+                    System.out.println(game.getBag().toString());
+                    break;
                 }
-                System.out.println("Items in your bag:");
-                System.out.println(game.getBag().toString());
-                break;
             case "i":
                 System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
                         " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +

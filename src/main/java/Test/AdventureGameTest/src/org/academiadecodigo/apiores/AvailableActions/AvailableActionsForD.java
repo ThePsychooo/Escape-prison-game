@@ -4,15 +4,10 @@ public class AvailableActionsForD {
     public static void checkActions(String command, Game game) {
         switch (command) {
             case "look":
-                System.out.println("There are lines on the wall.\nIt looks like they were used to count the weeks.\nDo you want to count them?");
+                System.out.println("There are lines on the wall.\nIt looks like they were used to count the weeks.\nMaybe you want to count them?");
                 break;
             case "get lines":
                 System.out.println("You cannot do that!");
-            case "yes":
-                System.out.println("I can count 6 weeks.");
-                break;
-            case "no":
-                System.out.println("Ok. But maybe you should...\nWho knows if it's a clue to something.");
             case "use lines":
                 System.out.println("You cannot do that!");
                 break;
@@ -37,6 +32,14 @@ public class AvailableActionsForD {
                     return;
                 } else {
                     System.out.println("You don't have a newspaper.");
+                    break;
+                }
+            case "check flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("There's a hand written G under both of them.\nI wonder what that means...");
+                    break;
+                }else {
+                    System.out.println("You don't have this item.");
                     break;
                 }
             case "open envelope":
@@ -93,16 +96,27 @@ public class AvailableActionsForD {
                 break;
             case "count lines":
                 System.out.println("I can count 6 weeks.");
+                break;
             case "search lines":
                 System.out.println("Nothing interesting");
                 break;
+            case "use flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("No need to use flip flops here.");
+                    break;
+                }else{
+                    System.out.println("You don't have this item.");
+                    break;
+                }
             case "check bag":
                 if(game.getBag().isEmpty()){
                     System.out.println("Your bag is Empty.");
+                    break;
+                } else {
+                    System.out.println("Items in your bag:");
+                    System.out.println(game.getBag().toString());
+                    break;
                 }
-                System.out.println("Items in your bag:");
-                System.out.println(game.getBag().toString());
-                break;
             case "i":
                 System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
                         " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +

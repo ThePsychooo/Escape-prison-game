@@ -12,16 +12,32 @@ public class AvailableActionsForH {
             case "use mattress":
                 System.out.println("Do you want to take a nap now?\nYou must get out of this place, remember?");
                 break;
+            case "sleep":
+                System.out.println("Do you want to take a nap now?\nYou must get out of this place, remember?");
+                break;
             case "open mattress":
                 System.out.println("You cannot do that!");
                 break;
             case "read mattress":
                 System.out.println("You cannot do that!");
                 break;
+            case "check flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("There's a hand written G under both of them.\nI wonder what that means...");
+                    break;
+                }else {
+                    System.out.println("You don't have this item.");
+                    break;
+                }
             case "search mattress":
-                System.out.println("Interesting... you found an old newspaper from the future under it.");
-                game.updateBag("newspaper");
-                break;
+                if(game.getBag().contains("newspaper")){
+                    System.out.println("There is nothing else on the mattress.");
+                    break;
+                }else {
+                    System.out.println("Interesting... you found an old newspaper from the future under it.");
+                    game.updateBag("newspaper");
+                    break;
+                }
             case "read newspaper":
                 if (game.getBag().contains("newspaper")) {
                     System.out.println("THE END IS NEAR!\n" +
@@ -62,6 +78,7 @@ public class AvailableActionsForH {
                 if(game.getBag().contains("handwritten note")){
                     System.out.println("There's a quote from Cecília Meireles:\n'Freedom is a word that the human dream feeds," +
                             "\nwhich needs no one to explain\nand no one who does not understand.'");
+                    break;
                 } else {
                     System.out.println("You don't have a handwritten note.");
                     break;
@@ -69,8 +86,18 @@ public class AvailableActionsForH {
             case "use key":
                 if (game.getBag().contains("key")) {
                     System.out.println("You cannot use this key here.");
+                    break;
                 } else {
                     System.out.println("You don't have a key");
+                    break;
+                }
+            case "use flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("No need to use flip flops here.");
+                    break;
+                }else{
+                    System.out.println("You don't have this item.");
+                    break;
                 }
 
             case "use can opener":
@@ -91,10 +118,12 @@ public class AvailableActionsForH {
             case "check bag":
                 if(game.getBag().isEmpty()){
                     System.out.println("Your bag is Empty.");
+                    break;
+                } else {
+                    System.out.println("Items in your bag:");
+                    System.out.println(game.getBag().toString());
+                    break;
                 }
-                System.out.println("Items in your bag:");
-                System.out.println(game.getBag().toString());
-                break;
             case "i":
                 System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
                         " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +

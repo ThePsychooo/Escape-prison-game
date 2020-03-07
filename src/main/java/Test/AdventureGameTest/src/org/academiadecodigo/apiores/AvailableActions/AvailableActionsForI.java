@@ -13,11 +13,24 @@ public class AvailableActionsForI {
                 System.out.println("You cannot do that");
                 break;
             case "open door":
-                if (game.getBag().contains("gold key")) {
+                if(game.getOpenDoor()){
+                    System.out.println("The door is already open.");
+                    break;
+                }
+                else if (game.getBag().contains("golden key")) {
                     System.out.println("You made it!\nThis is the right key!\nThe door is open!");
-                    return;
+                    game.openDoor();
+                    break;
                 } else {
                     System.out.println("Door is locked.\nYou need the right key to open it.");
+                    break;
+                }
+            case "check flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("There's a hand written G under both of them.\nI wonder what that means...");
+                    break;
+                }else {
+                    System.out.println("You don't have this item.");
                     break;
                 }
             case "read newspaper":
@@ -41,15 +54,18 @@ public class AvailableActionsForI {
                     break;
                 }
             case "use golden key":
-                if (game.getBag().contains("gold key")) {
+                if(game.getOpenDoor()){
+                    System.out.println("The door is already open.");
+                    break;
+                }
+                else if (game.getBag().contains("golden key")) {
                     System.out.println("You made it!\nThis is the right key!\nThe door is open!");
                     game.openDoor();
                     return;
                 } else {
-                    System.out.println("Door is locked.\nYou need a key to open it.");
+                    System.out.println("You don't have this item.");
                     break;
                 }
-
             case "open envelope":
                 if (game.getBag().contains("envelope")) {
                     if (!game.getOpenEnvelope()) {
@@ -97,12 +113,23 @@ public class AvailableActionsForI {
             case "go out":
                 if (!game.getOpenDoor()) {
                     System.out.println("The door is locked, you can't go outside.");
+                    break;
                 } else {
                     if (game.getBag().contains("flip flops")) {
                         System.out.println("You are free!\nCongrats! You made it!");
+                        break;
                     } else {
                         System.out.println("Are you sure you want to step outside on your bare feet?");
+                        break;
                     }
+                }
+            case "use flip flops":
+                if(game.getBag().contains("flip flops")) {
+                    System.out.println("No need to use flip flops here.");
+                    break;
+                }else{
+                    System.out.println("You don't have this item.");
+                    break;
                 }
 
             case "exit":
@@ -112,8 +139,10 @@ public class AvailableActionsForI {
                 } else {
                     if (game.getBag().contains("flip flops")) {
                         System.out.println("You are free!\nCongrats! You made it!");
+                        break;
                     } else {
                         System.out.println("Are you sure you want to step outside on your bare feet?");
+                        break;
                     }
                 }
             case "go outside":
@@ -123,8 +152,10 @@ public class AvailableActionsForI {
                 } else {
                     if (game.getBag().contains("flip flops")) {
                         System.out.println("You are free!\nCongrats! You made it!");
+                        break;
                     } else {
                         System.out.println("Are you sure you want to step outside on your bare feet?");
+                        break;
                     }
                 }
             case "read door":
@@ -136,10 +167,12 @@ public class AvailableActionsForI {
             case "check bag":
                 if(game.getBag().isEmpty()){
                     System.out.println("Your bag is Empty.");
+                    break;
+                } else {
+                    System.out.println("Items in your bag:");
+                    System.out.println(game.getBag().toString());
+                    break;
                 }
-                System.out.println("Items in your bag:");
-                System.out.println(game.getBag().toString());
-                break;
             case "i":
                 System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
                         " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +

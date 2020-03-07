@@ -1,18 +1,22 @@
 package Test.AdventureGameTest.src.org.academiadecodigo.apiores.AvailableActions;
+
 import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Game;
 import org.academiadecodigo.bootcamp.Prompt;
 import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 import org.academiadecodigo.bootcamp.scanners.integer.IntegerInputScanner;
+
 import java.util.HashSet;
+
 public class AvailableActionsForG {
     public static void checkActions(String command, Game game) {
         boolean pushedWardrobe = false;
         switch (command) {
             case "look":
                 if (!game.getPushWadrobe()) {
-                    if(game.getBag().contains("can opener")){
+                    if (game.getBag().contains("can opener")) {
                         System.out.println("There's an old wardrobe in front of you.");
-                    }else if (!(game.getBag().contains("can opener"))) {
+                        break;
+                    } else if (!(game.getBag().contains("can opener"))) {
                         System.out.println("There's an old wardrobe in front of you.\nMaybe there's something inside.");
                         return;
                     }
@@ -20,14 +24,31 @@ public class AvailableActionsForG {
                     System.out.println("There's an old wardrobe in front of you and a vault behind it.");
                     return;
                 }
-            case "open wardrobe":
-                    System.out.println("You found a jacket inside the wardrobe.");
+            case "check flip flops":
+                if (game.getBag().contains("flip flops")) {
+                    System.out.println("There's a hand written G under both of them.\nI wonder what that means...");
                     break;
+                } else {
+                    System.out.println("You don't have this item.");
+                    break;
+                }
+            case "open wardrobe":
+                System.out.println("You found a jacket inside the wardrobe.");
+                game.openWardrobe();
+                break;
+            case "search wardrobe":
+                System.out.println("You found a jacket inside the wardrobe.");
+                game.openWardrobe();
+                break;
             case "use chair":
                 if (game.getBag().contains("chair")) {
-                    System.out.println("You climb into the chair.\nYou found an envelope on top of the wardrobe.");
-                    game.updateBag("envelope");
-                    return;
+                    if (game.getBag().contains("envelope")) {
+                        System.out.println("There is nothing on top of the wardrobe");
+                    } else {
+                        System.out.println("You climb into the chair.\nYou found an envelope on top of the wardrobe.");
+                        game.updateBag("envelope");
+                        return;
+                    }
                 } else {
                     System.out.println("Nothing interesting happens.");
                     return;
@@ -40,11 +61,11 @@ public class AvailableActionsForG {
                         game.updateBag("key");
                         game.openEnvelope();
                         return;
-                    }else if(game.getOpenEnvelope()){
+                    } else if (game.getOpenEnvelope()) {
                         System.out.println("The envelope has already been opened.");
                         break;
                     }
-                }   else {
+                } else {
                     System.out.println("You don't have an envelope.");
                     break;
                 }
@@ -69,7 +90,7 @@ public class AvailableActionsForG {
                     break;
                 }
             case "read handwritten note":
-                if(game.getBag().contains("handwritten note")){
+                if (game.getBag().contains("handwritten note")) {
                     System.out.println("There's a quote from Cecília Meireles:\n'Freedom is a word that the human dream feeds," +
                             "\nwhich needs no one to explain\nand no one who does not understand.'");
                     break;
@@ -87,31 +108,63 @@ public class AvailableActionsForG {
                 }
 
             case "use can opener":
-                if(game.getBag().contains("can opener")){
+                if (game.getBag().contains("can opener")) {
                     System.out.println("You need a can to use it with");
                     break;
                 } else {
                     System.out.println("You do not have this item");
                     break;
                 }
+            case "use flip flops":
+                if (game.getBag().contains("flip flops")) {
+                    System.out.println("No need to use flip flops here.");
+                    break;
+                } else {
+                    System.out.println("You don't have this item.");
+                    break;
+                }
             case "use golden key":
-                if(game.getBag().contains("golden key")){
+                if (game.getBag().contains("golden key")) {
                     System.out.println("Not useful in this situation");
+                    break;
                 } else {
                     System.out.println("You do not have this item");
                     break;
                 }
 
             case "use jacket":
+                if (game.getOpenWardrobe()) {
                     System.out.println("Too small for you.\nBut it looks like there's something in it's pocket");
                     break;
-
-                    case "search jacket":
-                    System.out.println("You found a can opener inside the jacket's pocket");
-                    game.getBag().add("can opener");
+                } else {
+                    System.out.println("Which Jacket?");
                     break;
+                }
+            case "search jacket":
+                if (game.getOpenWardrobe()) {
+                    if (game.getBag().contains("can opener")) {
+                        System.out.println("There is nothing special about this jacket.");
+                        break;
+                    } else {
+                        System.out.println("You found a can opener inside the jacket's pocket");
+                        game.getBag().add("can opener");
+                        break;
+                    }
+                } else {
+                    System.out.println("Which Jacket?");
+                    break;
+                }
 
             case "push wardrobe":
+                if (!game.getPushWadrobe()) {
+                    System.out.println("You push the wardrobe.\nThere is a vault behind it!");
+                    game.pushWardrobe();
+                    return;
+                } else {
+                    System.out.println("You already pushed the wardrobe.");
+                    return;
+                }
+            case "move wardrobe":
                 if (!game.getPushWadrobe()) {
                     System.out.println("You push the wardrobe.\nThere is a vault behind it!");
                     game.pushWardrobe();
@@ -125,26 +178,34 @@ public class AvailableActionsForG {
                     System.out.println("I do not understand.\nPlease press 'i' to check your options.");
                     return;
                 } else {
-                    Prompt prompt = new Prompt(System.in, System.out);
-                    IntegerInputScanner codeInput = new IntegerInputScanner();
-                    codeInput.setMessage("Insert the code for the vault:\n");
-                    int code = prompt.getUserInput(codeInput);
-                    if (code == 170420) {
-                        System.out.println("The vault is now open and you found a gold key inside it!");
-                        game.updateBag("gold key");
+                    if (game.getOpenVault()) {
+                        System.out.println("The vault has already been opened.");
                         break;
                     } else {
-                        System.out.println("The code is invalid.");
-                        return;
+                        Prompt prompt = new Prompt(System.in, System.out);
+                        IntegerInputScanner codeInput = new IntegerInputScanner();
+                        codeInput.setMessage("Insert the code for the vault (6 digits):\n");
+                        int code = prompt.getUserInput(codeInput);
+                        if (code == 170420) {
+                            System.out.println("The vault is now open and you found a golden key inside it!");
+                            game.updateBag("golden key");
+                            game.openVault();
+                            break;
+                        } else {
+                            System.out.println("The code is invalid.");
+                            return;
+                        }
                     }
                 }
             case "check bag":
-                if(game.getBag().isEmpty()){
+                if (game.getBag().isEmpty()) {
                     System.out.println("Your bag is Empty.");
+                    break;
+                } else {
+                    System.out.println("Items in your bag:");
+                    System.out.println(game.getBag().toString());
+                    break;
                 }
-                System.out.println("Items in your bag:");
-                System.out.println(game.getBag().toString());
-                break;
             case "i":
                 System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
                         " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +

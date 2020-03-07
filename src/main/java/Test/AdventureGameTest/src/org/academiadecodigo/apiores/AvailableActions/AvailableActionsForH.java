@@ -38,6 +38,15 @@ public class AvailableActionsForH {
                     game.updateBag("newspaper");
                     break;
                 }
+            case "check mattress":
+                if(game.getBag().contains("newspaper")){
+                    System.out.println("There is nothing else on the mattress.");
+                    break;
+                }else {
+                    System.out.println("Interesting... you found an old newspaper from the future under it.");
+                    game.updateBag("newspaper");
+                    break;
+                }
             case "read newspaper":
                 if (game.getBag().contains("newspaper")) {
                     System.out.println("THE END IS NEAR!\n" +

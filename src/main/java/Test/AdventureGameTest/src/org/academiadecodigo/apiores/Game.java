@@ -52,7 +52,7 @@ public class Game {
 
         Prompt prompt = new Prompt(System.in, System.out);
         StringInputScanner usernameInput = new StringInputScanner();
-        usernameInput.setMessage("What's your name prisoner?\n");
+        usernameInput.setMessage("How do you want to be called prisoner?\n");
         String username = prompt.getUserInput(usernameInput);
         if (username.toLowerCase().equals("jojo")){
             System.out.println("Jojo? I once had and MC with that name. I prefer not to remember those days...");

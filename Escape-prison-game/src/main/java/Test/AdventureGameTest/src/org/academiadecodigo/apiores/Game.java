@@ -68,6 +68,7 @@ public class Game {
                     Directions.GO_WEST.getInput().equals(command)) {
                 playerPosition.updatePosition(command);
             } else {
+                System.out.println("Server Status");
                 cellVerification.verify(command, playerPosition, this);
             }
         }

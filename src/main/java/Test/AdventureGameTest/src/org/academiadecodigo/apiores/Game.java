@@ -36,6 +36,16 @@ public class Game {
                 "   ░  ░      ░  ░ ░            ░  ░            ░  ░      ░         ░ ░      ░ ░         ░   \n" +
                 "                ░                                                                           \n");
 
+
+        System.out.println("Welcome to the most amazing text adventure game!\n" +
+                "For some unknown reason you are locked inside a room.\n" +
+                "You feel dizzy, you can't remember your name\n" +
+                "and you are not sure how long you've been in captivity.\n" +
+                "You must escape the room but there's something else you gotta know:\n" +
+                "There's another room in front with another player in the exact same situation.\n" +
+                "The first player escaping the room wins the game.\n" +
+                "Use your time wisely and escape the room as fast as you can!");
+
         System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
                 " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +
                 "Read <Item>\nSearch<Item>\n\nIf you want to check this instructions again, use command i.\n");
@@ -45,7 +55,7 @@ public class Game {
         usernameInput.setMessage("What's your name prisoner?\n");
         String username = prompt.getUserInput(usernameInput);
         if (username.toLowerCase().equals("jojo")){
-            System.out.println("Jojo? I once had and MC with that name. What an idiot he was...");
+            System.out.println("Jojo? I once had and MC with that name. I prefer not to remember those days...");
         } else {
             System.out.println(username + " huh? What a pathetic name...");
         }

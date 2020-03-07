@@ -28,7 +28,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.academiadecodigo.apiores.Main</mainClass>
+                            <mainClass>Test.AdventureGameTest.src.org.academiadecodigo.apiores.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -40,7 +40,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.academiadecodigo.apiores.Main</mainClass>
+                            <mainClass>Test.AdventureGameTest.src.org.academiadecodigo.apiores.Main</mainClass>
                         </manifest>
                         <descriptorRefs>
                             <descriptorRef>jar-with-dependencies</descriptorRef>

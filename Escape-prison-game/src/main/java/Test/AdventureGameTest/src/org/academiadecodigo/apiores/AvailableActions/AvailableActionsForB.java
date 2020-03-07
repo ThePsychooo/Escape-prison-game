@@ -7,11 +7,7 @@ public class AvailableActionsForB {
                 System.out.println("There's a sink in the wall.\nYou may wash your hands!");
                 break;
             case "wash hands":
-                System.out.println("No running water.");
-                break;
             case "drink water":
-                System.out.println("No running water.");
-                break;
             case "use sink":
                 System.out.println("No running water.");
                 break;

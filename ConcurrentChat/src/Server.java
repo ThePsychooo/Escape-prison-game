@@ -49,13 +49,13 @@ public class Server {
     public void solvingConnection(Socket client) {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
-                if (store.size() == 2) {
-                    for (int i = 0; i < store.size(); i++) {
-                        PrintWriter output = new PrintWriter(store.get(i).getOutputStream(), true);
-                        output.println("2nd_Player_Connected");
-                        output.flush();
-                    }
+            if (store.size() == 2) {
+                for (int i = 0; i < store.size(); i++) {
+                    PrintWriter output = new PrintWriter(store.get(i).getOutputStream(), true);
+                    output.println("2nd_Player_Connected");
+                    output.flush();
                 }
+            }
 
             if (store.size() > 2) {
                 PrintWriter output = new PrintWriter(store.get(2).getOutputStream(), true);
@@ -65,44 +65,49 @@ public class Server {
                 client.close();
 
             }
-                if (!player1Joined) {
-                    PrintWriter output = new PrintWriter(store.get(0).getOutputStream(), true);
-                    output.println("Waiting for a second player.");
-                    player1Joined = true;
-                    output.flush();
+            if (!player1Joined) {
+                PrintWriter output = new PrintWriter(store.get(0).getOutputStream(), true);
+                output.println("Waiting for a second player.");
+                player1Joined = true;
+                output.flush();
+            }
+
+            do {
+                String c = input.readLine();
+                if (c.equals("/quit")) {
+                    System.out.println("disconnecting");
+                    store.remove(client);
+                    client.close();
+                    return;
+                }
+                String arr[] = c.split(" ", 2);
+                String firstWord = arr[0];   //the
+                String theRest = arr[1];
+                if (firstWord.equals("INTRO")) {
+                    System.out.println(theRest);
+                } else if (firstWord.equals("END")) {
+                    System.out.println(theRest);
+                    for (int i = 0; i < store.size(); i++) {
+                        PrintWriter output = new PrintWriter(store.get(i).getOutputStream(), true);
+                        output.println(c);
+                        output.flush();
+                    } store.get(0).close();
+                    store.get(1).close();
+                    store.clear();
+                    player1Joined = false;
+
+
+
                 }
 
-                do {
-                    String c = input.readLine();
-                    if (c.equals("/quit")) {
-                        System.out.println("disconnecting");
-                        store.remove(client);
-                        client.close();
-                        return;
-                    }
-                    String arr[] = c.split(" ", 2);
-                    String firstWord = arr[0];   //the
-                    String theRest = arr[1];
-                    if(firstWord.equals("INTRO")) {
-                        System.out.println(theRest);
-                    } else if(firstWord.equals("END")){
-                        System.out.println(theRest);
-                        for (int i = 0; i < store.size(); i++) {
-                            PrintWriter output = new PrintWriter(store.get(i).getOutputStream(), true);
-                            output.println(c);
-                            output.flush();
-                        }
-                        store.get(0).close();
-                        store.remove(0);
-                        store.get(1).close();
-                        store.remove(1);
-                    }
-                } while (true);
+            } while (true);
 
-            } catch(Exception e){
-                e.getMessage();
-            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
+
+
 
     class socketThread implements Runnable {
         private Socket clientSocket;
@@ -117,6 +122,8 @@ public class Server {
                 store.add(clientSocket);
             solvingConnection(clientSocket);
         }
+
+
     }
 
 }

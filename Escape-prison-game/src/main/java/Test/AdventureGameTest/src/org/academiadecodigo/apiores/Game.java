@@ -24,47 +24,27 @@ public class Game {
 
     public void init() {
 
-        System.out.println("\n" +
-                "▓█████   ██████  ▄████▄   ▄▄▄       ██▓███  ▓█████     ██▀███   ▒█████   ▒█████   ███▄ ▄███▓\n" +
-                "▓█   ▀ ▒██    ▒ ▒██▀ ▀█  ▒████▄    ▓██░  ██▒▓█   ▀    ▓██ ▒ ██▒▒██▒  ██▒▒██▒  ██▒▓██▒▀█▀ ██▒\n" +
-                "▒███   ░ ▓██▄   ▒▓█    ▄ ▒██  ▀█▄  ▓██░ ██▓▒▒███      ▓██ ░▄█ ▒▒██░  ██▒▒██░  ██▒▓██    ▓██░\n" +
-                "▒▓█  ▄   ▒   ██▒▒▓▓▄ ▄██▒░██▄▄▄▄██ ▒██▄█▓▒ ▒▒▓█  ▄    ▒██▀▀█▄  ▒██   ██░▒██   ██░▒██    ▒██ \n" +
-                "░▒████▒▒██████▒▒▒ ▓███▀ ░ ▓█   ▓██▒▒██▒ ░  ░░▒████▒   ░██▓ ▒██▒░ ████▓▒░░ ████▓▒░▒██▒   ░██▒\n" +
-                "░░ ▒░ ░▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░ ▒▒   ▓▒█░▒▓▒░ ░  ░░░ ▒░ ░   ░ ▒▓ ░▒▓░░ ▒░▒░▒░ ░ ▒░▒░▒░ ░ ▒░   ░  ░\n" +
-                " ░ ░  ░░ ░▒  ░ ░  ░  ▒     ▒   ▒▒ ░░▒ ░      ░ ░  ░     ░▒ ░ ▒░  ░ ▒ ▒░   ░ ▒ ▒░ ░  ░      ░\n" +
-                "   ░   ░  ░  ░  ░          ░   ▒   ░░          ░        ░░   ░ ░ ░ ░ ▒  ░ ░ ░ ▒  ░      ░   \n" +
-                "   ░  ░      ░  ░ ░            ░  ░            ░  ░      ░         ░ ░      ░ ░         ░   \n" +
-                "                ░                                                                           \n");
+        System.out.println(Messages.GAME_TITLE);
 
+        System.out.println(Messages.GAME_WELCOME);
 
-        System.out.println("Welcome to the most amazing text adventure game!\n" +
-                "For some unknown reason you are locked inside a room.\n" +
-                "You feel dizzy, you can't remember your name\n" +
-                "and you are not sure how long you've been in captivity.\n" +
-                "You must escape the room but there's something else you gotta know:\n" +
-                "There's another room in front with another player in the exact same situation.\n" +
-                "The first player escaping the room wins the game.\n" +
-                "Use your time wisely and escape the room as fast as you can!");
-
-        System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
-                " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +
-                "Read <Item>\nSearch<Item>\n\nIf you want to check this instructions again, use command i.\n");
+        System.out.println(Messages.GAME_COMMANDS);
 
         Prompt prompt = new Prompt(System.in, System.out);
         StringInputScanner usernameInput = new StringInputScanner();
-        usernameInput.setMessage("The game is about to start. How do you want to be called prisoner?\n");
+        usernameInput.setMessage(Messages.GAME_USERNAME);
         String username = prompt.getUserInput(usernameInput);
         client = new Client(username, this);
         if (username.toLowerCase().equals("jojo")){
-            System.out.println("Jojo? I once had an MC with that name. I prefer not to remember those days...");
+            System.out.println(Messages.GAME_USERNAME_JOJO);
         } else if (username.toLowerCase().equals("rita")){
-            System.out.println("Rita? I once had an MC with that name. She was crazy about pineapples!");
+            System.out.println(Messages.GAME_USERNAME_RITA);
         } else if (username.toLowerCase().equals("ricardo")){
-            System.out.println("Ricardo? I once had an MC with that name. I bet he would complain about this game's design!");
+            System.out.println(Messages.GAME_USERNAME_RICARDO);
         } else if (username.toLowerCase().equals("soraia")){
-            System.out.println("Soraia? I once had an MC with that name. Maybe she could explain how this game works.");
+            System.out.println(Messages.GAME_USERNAME_SORAIA);
         } else {
-            System.out.println("\n" + username + " Huh? What a pathetic name...");
+            System.out.println("\n" + username + Messages.GAME_PATHETIC);
         }
 
         while (true) {
@@ -147,36 +127,7 @@ public class Game {
     }
 
     public void gameStart(){
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("\nThe game will start in...");
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("\n3");
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("\n2");
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("\n1");
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("\nESCAPE OR DIE!");
+        Messages.GAME_START();
         gameStart = true;
     }
 

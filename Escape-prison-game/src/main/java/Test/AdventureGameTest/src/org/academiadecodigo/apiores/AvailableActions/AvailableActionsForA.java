@@ -1,20 +1,22 @@
 package Test.AdventureGameTest.src.org.academiadecodigo.apiores.AvailableActions;
 import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Commands.EasterEggs;
 import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Game;
+import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Messages;
+
 import java.util.HashSet;
 public class AvailableActionsForA {
     public static void checkActions(String command, Game game) {
         switch (command) {
             case "look":
                 if (game.getBag().contains("chair")) {
-                    System.out.println("Nothing interesting in front of you.");
+                    System.out.println(Messages.ACTION_NOTHING_INTERESTING_FRONT);
                 } else {
                     System.out.println("There's an old chair in front of you.");
                     break;
                 }
             case "get chair":
                 if (game.getBag().contains("chair")) {
-                    System.out.println("There's nothing to get");
+                    System.out.println(Messages.ACTION_NOTHING_GET);
                     return;
                 } else {
                     System.out.println("You got the chair.");
@@ -22,115 +24,102 @@ public class AvailableActionsForA {
                     break;
                 }
             case "use chair":
-                System.out.println("It's nice to get a good rest.");
+                System.out.println(Messages.ACTION_REST);
                 break;
             case "sit":
-                System.out.println("It's nice to get a good rest.");
+                System.out.println(Messages.ACTION_REST);
                 break;
             case "sit on chair":
-                System.out.println("It's nice to get a good rest.");
+                System.out.println(Messages.ACTION_REST);
                 break;
             case "open chair":
-                System.out.println("You cannot do that!");
+                System.out.println(Messages.ACTION_CANNOT);
                 break;
             case "use flip flops":
                 if(game.getBag().contains("flip flops")) {
-                    System.out.println("No need to use flip flops here.");
+                    System.out.println(Messages.ACTION_NO_NEED_FLIPFLOPS);
                     break;
                 }else{
-                    System.out.println("You don't have this item.");
+                    System.out.println(Messages.ACTION_NO_ITEM);
                     break;
                 }
             case "read chair":
-                System.out.println("You cannot do that!");
+                System.out.println(Messages.ACTION_CANNOT);
                 break;
             case "open envelope":
                 if (game.getBag().contains("envelope")) {
                     if (!game.getOpenEnvelope()) {
-                        System.out.println("There is a handwritten note and a key inside the envelope");
+                        System.out.println(Messages.ACTION_OPEN_ENVELOPE);
                         game.updateBag("handwritten note");
                         game.updateBag("key");
                         game.openEnvelope();
                         return;
                     }else if(game.getOpenEnvelope()){
-                        System.out.println("The envelope has already been opened.");
+                        System.out.println(Messages.ACTION_OPENED_ENVELOPE);
                         break;
                     }
                 }   else {
-                    System.out.println("You don't have an envelope.");
+                    System.out.println(Messages.ACTION_NO_ENVELOPE);
                     break;
                 }
             case "read handwritten note":
                 if(game.getBag().contains("handwritten note")){
-                    System.out.println("There's a quote from Cecília Meireles:\n'Freedom is a word that the human dream feeds," +
-                            "\nwhich needs no one to explain\nand no one who does not understand.'");
+                    System.out.println(Messages.ACTION_READ_NOTE);
                     break;
                 } else {
-                    System.out.println("You don't have a handwritten note.");
+                    System.out.println(Messages.ACTION_NO_NOTE);
                     break;
                 }
             case "use key":
                 if (game.getBag().contains("key")) {
-                    System.out.println("You cannot use this key here.");
+                    System.out.println(Messages.ACTION_CANT_USE_KEY);
                     break;
                 } else {
-                    System.out.println("You don't have a key");
+                    System.out.println(Messages.ACTION_NO_KEY);
                     break;
                 }
 
             case "use can opener":
                 if(game.getBag().contains("can opener")){
-                    System.out.println("You need a can to use it with");
+                    System.out.println(Messages.ACTION_USE_CANOPENER);
                     break;
                 } else {
-                    System.out.println("You do not have this item");
+                    System.out.println(Messages.ACTION_NO_ITEM);
                     break;
                 }
             case "check flip flops":
                 if(game.getBag().contains("flip flops")) {
-                    System.out.println("There's a hand written G under both of them.\nI wonder what that means...");
+                    System.out.println(Messages.ACTION_FLIPFLOPS_MSG);
                     break;
                 }else {
-                    System.out.println("You don't have this item.");
+                    System.out.println(Messages.ACTION_NO_ITEM);
                     break;
                 }
             case "read newspaper":
                 if (game.getBag().contains("newspaper")) {
-                    System.out.println("THE END IS NEAR!\n" +
-                            "These words may save your life and show you the way to freedom.\n" +
-                            "You may, therefore, read them very carefully and take into account\n" +
-                            "every single aspect, even if it may look insignificant in the first place.\n" +
-                            "Life is quite rich in obstacles and surprises and sometimes\n" +
-                            "the right path is in front of our eyes and we can't see it.\n" +
-                            "In most situations it's important to keep a crispy mind and\n" +
-                            "consider all the possibilities.\n" +
-                            "Nothing should be taken for granted and it's good to keep healthy habits\n" +
-                            "so that your body can be prepared for any unpredictable circumstances,\n" +
-                            "like moving or pushing something that may look hard to move or push.\n" +
-                            "The way out to our problems is, sometimes, hidden behind curtains, closets or walls\n" +
-                            "and it's important to play our best shot in the right hour, day and year.");
+                    System.out.println(Messages.ACTION_READ_NEWSPAPER);
                     return;
                 } else {
-                    System.out.println("You don't have a newspaper.");
+                    System.out.println(Messages.ACTION_NO_NEWSPAPER);
                     break;
                 }
             case "use golden key":
                 if(game.getBag().contains("golden key")){
-                    System.out.println("Not useful in this situation");
+                    System.out.println(Messages.ACTION_GOLDKEY_MSG);
                     break;
                 } else {
-                    System.out.println("You do not have this item");
+                    System.out.println(Messages.ACTION_NO_ITEM);
                     break;
                 }
             case "search chair":
-                System.out.println("Nothing interesting.");
+                System.out.println(Messages.ACTION_NOTHING_INTERESTING);
                 break;
             case "check bag":
                 if(game.getBag().isEmpty()){
-                    System.out.println("Your bag is Empty.");
+                    System.out.println(Messages.ACTION_BAG_EMPTY);
                     break;
                 } else {
-                    System.out.println("Items in your bag:");
+                    System.out.println(Messages.ACTION_BAG_ITEMS);
                     System.out.println(game.getBag().toString());
                     break;
                 }
@@ -138,12 +127,10 @@ public class AvailableActionsForA {
                 EasterEggs.wank();
                 break;
             case "i":
-                System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
-                        " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +
-                        "Read <Item>\nSearch<Item>\n\nIf you want to check this instructions again, use command i.\n");
+                System.out.println(Messages.GAME_COMMANDS);
                 break;
             default:
-                System.out.println("I do not understand.\nBe more specific or look again.\nMaybe you'd like to press 'i' to check your options.");
+                System.out.println(Messages.ACTION_NOT_UNDERSTAND);
         }
     }
 }

@@ -36,28 +36,6 @@ public class Client implements Runnable {
 
     }
 
-    /*private void sendMessage() {
-        try {
-            writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-            reader = new BufferedReader(new InputStreamReader(System.in));
-            while (client.isBound()) {
-                String chat = reader.readLine();
-                if (chat != null) {
-                    writer.write(chat);
-                    writer.newLine();
-                    writer.flush();
-                } else {
-                    client.close();
-                }
-            }
-        } catch (UnknownHostException ex) {
-            ex.getMessage();
-        } catch (IOException er) {
-            er.getMessage();
-        }
-    }
-   */
-
     private void sendStartingMessage() {
 
         try {

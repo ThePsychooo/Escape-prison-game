@@ -17,7 +17,7 @@ public class PlayerPosition {
 
         if (command.equals("n")){
             if(currentHeight == 1){
-                System.out.println("There's a wall in front of you! You can't advance!");
+                System.out.println(Messages.PLAYER_POSITION_WALL);
             } else {
                currentHeight--;
                 System.out.println("You moved North.");
@@ -26,7 +26,7 @@ public class PlayerPosition {
 
         if (command.equals("s")){
             if(currentHeight == room.roomHeight){
-                System.out.println("There's a wall in front of you! You can't advance!");
+                System.out.println(Messages.PLAYER_POSITION_WALL);
             } else {
                 currentHeight++;
                 System.out.println("You moved South.");
@@ -35,7 +35,7 @@ public class PlayerPosition {
 
         if (command.equals("e")){
             if(currentWidth == room.roomWidth){
-                System.out.println("There's a wall in front of you! You can't advance!");
+                System.out.println(Messages.PLAYER_POSITION_WALL);
             } else {
                 currentWidth++;
                 System.out.println("You moved East.");
@@ -44,7 +44,7 @@ public class PlayerPosition {
 
         if (command.equals("w")){
             if(currentWidth == 1){
-                System.out.println("There's a wall in front of you! You can't advance!");
+                System.out.println(Messages.PLAYER_POSITION_WALL);
             } else {
                 currentWidth--;
                 System.out.println("You moved West.");

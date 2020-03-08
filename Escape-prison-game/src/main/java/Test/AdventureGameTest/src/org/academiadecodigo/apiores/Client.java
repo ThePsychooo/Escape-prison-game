@@ -7,6 +7,7 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Client implements Runnable {
     private static Scanner scanner = new Scanner(System.in);
@@ -21,7 +22,7 @@ public class Client implements Runnable {
         this.username = username;
         this.game = game;
         try {
-            client = new Socket("192.168.1.105", 8020);
+            client = new Socket("192.168.1.110", 8020);
             ExecutorService executorService = Executors.newCachedThreadPool();
             executorService.submit(this);
             sendStartingMessage();
@@ -94,6 +95,14 @@ public class Client implements Runnable {
                         game.gameStart();
                     }else if(message.equals("Waiting for a second player.")){
                        game.player1Connected();
+                    } else if(message.equals("The Server is full.")){
+                        try {
+                            TimeUnit.SECONDS.sleep(1);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        System.out.println("\nThe Server is full. You must wait for the current game to finish.");
+                        System.exit(0);
                     }
                 } else {
                     client.close();

@@ -33,7 +33,7 @@ public class Server {
     }
 
     public synchronized void serverInit(ServerSocket server) {
-        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
         try {
             while (true) {
 
@@ -55,8 +55,16 @@ public class Server {
                         output.flush();
                     }
                 }
+
+            if (store.size() > 2) {
+                PrintWriter output = new PrintWriter(store.get(2).getOutputStream(), true);
+                output.println("The Server is full.");
+                output.flush();
+                store.remove(client);
+                client.close();
+
+            }
                 if (!player1Joined) {
-                    System.out.println(store.size());
                     PrintWriter output = new PrintWriter(store.get(0).getOutputStream(), true);
                     output.println("Waiting for a second player.");
                     player1Joined = true;

@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -11,13 +12,13 @@ import java.lang.*;
 
 public class Server {
 
-    private Socket client;
-    private static Vector<Socket> store;
+
+    private static ArrayList<Socket> store;
     private boolean player1Joined = false;
 
 
     public static void main(String[] args) {
-        store = new Vector<>();
+        store = new ArrayList<>();
         Server server = new Server();
         server.listen(8020);
     }
@@ -31,43 +32,38 @@ public class Server {
         }
     }
 
-    public void serverInit(ServerSocket server) {
+    public synchronized void serverInit(ServerSocket server) {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         try {
             while (true) {
-                client = server.accept();
-                executorService.submit(new socketThread());
 
-                if (!player1Joined) {
-                    PrintWriter output = new PrintWriter(store.elementAt(0).getOutputStream(), true);
-                    output.println("Waiting for a second player.");
-                    player1Joined = true;
-                    output.flush();
-                    System.out.println();
-                    player1Joined = true;
-                }
+                Socket client = server.accept();
+                executorService.submit(new socketThread(client));
+
             }
-
-              /*  if (store.size() == 1){
-                    for (int i = 0; i < store.size(); i++) {
-                        try {
-                            PrintWriter output = new PrintWriter(store.elementAt(i).getOutputStream(), true);
-                            output.println("Waiting for a second player.");
-                            output.flush();
-                        } catch (Exception e) {
-                            System.out.println();
-                        }
-                    }
-                }*/
-
         } catch (Exception e) {
-            e.getMessage();
         }
     }
 
     public void solvingConnection(Socket client) {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
+
+            if (store.size() == 2) {
+                System.out.println(store.size());
+                for (int i = 0; i < store.size(); i++) {
+                    PrintWriter output = new PrintWriter(store.get(i).getOutputStream(), true);
+                    output.println("CARALHOOOOOOO");
+                    output.flush();
+                }
+            }
+            if (!player1Joined) {
+                System.out.println(store.size());
+                PrintWriter output = new PrintWriter(store.get(0).getOutputStream(), true);
+                output.println("Waiting for a second player.");
+                player1Joined = true;
+                output.flush();
+            }
             do {
                 String c = input.readLine();
                 if (c.equals("/quit")) {
@@ -78,17 +74,25 @@ public class Server {
                 }
                 System.out.println(c);
             } while (true);
-        } catch (IOException ex) {
-            ex.getMessage();
+
+        } catch (Exception e) {
+            e.getMessage();
         }
+
     }
 
     class socketThread implements Runnable {
+        private Socket clientSocket;
+
+        public socketThread(Socket clientSocket) {
+            this.clientSocket = clientSocket;
+        }
+
         @Override
         public void run() {
-            if (client.isBound())
-                store.add(client);
-            solvingConnection(client);
+            if (clientSocket.isBound())
+                store.add(clientSocket);
+            solvingConnection(clientSocket);
         }
     }
 

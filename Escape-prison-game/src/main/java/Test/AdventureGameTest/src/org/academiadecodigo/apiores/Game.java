@@ -17,6 +17,7 @@ public class Game {
     private boolean openWardrobe = false;
     private boolean openVault = false;
     private Client client;
+    private boolean gameStart = false;
 
     public void init() {
 
@@ -57,7 +58,9 @@ public class Game {
             System.out.println(username + " huh? What a pathetic name...");
         }
 
-        while (true) {
+
+
+        while (gameStart) {
             StringInputScanner commandInput = new StringInputScanner();
             commandInput.setMessage("\nCommand:\n");
             String command = prompt.getUserInput(commandInput).toLowerCase();

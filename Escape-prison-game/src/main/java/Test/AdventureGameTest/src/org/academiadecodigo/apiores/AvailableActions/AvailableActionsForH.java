@@ -10,9 +10,9 @@ public class AvailableActionsForH {
                 System.out.println("Why would you want to get a mattress?\nMaybe you want to search it instead...");
                 break;
             case "use mattress":
-                System.out.println("Do you want to take a nap now?\nYou must get out of this place, remember?");
-                break;
             case "sleep":
+            case "lay down":
+            case "take a nap":
                 System.out.println("Do you want to take a nap now?\nYou must get out of this place, remember?");
                 break;
             case "open mattress":
@@ -30,14 +30,6 @@ public class AvailableActionsForH {
                     break;
                 }
             case "search mattress":
-                if(game.getBag().contains("newspaper")){
-                    System.out.println("There is nothing else on the mattress.");
-                    break;
-                }else {
-                    System.out.println("Interesting... you found an old newspaper from the future under it.");
-                    game.updateBag("newspaper");
-                    break;
-                }
             case "check mattress":
                 if(game.getBag().contains("newspaper")){
                     System.out.println("There is nothing else on the mattress.");
@@ -120,6 +112,7 @@ public class AvailableActionsForH {
             case "use golden key":
                 if(game.getBag().contains("golden key")){
                     System.out.println("Not useful in this situation");
+                    break;
                 } else {
                     System.out.println("You do not have this item");
                     break;

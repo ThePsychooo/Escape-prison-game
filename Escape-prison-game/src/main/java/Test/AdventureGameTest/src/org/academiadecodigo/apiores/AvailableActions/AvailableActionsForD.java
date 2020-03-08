@@ -87,6 +87,7 @@ public class AvailableActionsForD {
             case "use golden key":
                 if(game.getBag().contains("golden key")){
                     System.out.println("Not useful in this situation");
+                    break;
                 } else {
                     System.out.println("You do not have this item");
                     break;
@@ -95,6 +96,8 @@ public class AvailableActionsForD {
                 System.out.println("It would be better to count them.");
                 break;
             case "count lines":
+            case "count":
+            case "count weeks":
                 System.out.println("I can count 6 weeks.");
                 break;
             case "search lines":

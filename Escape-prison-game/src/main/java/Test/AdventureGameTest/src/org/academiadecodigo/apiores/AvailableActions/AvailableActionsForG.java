@@ -32,10 +32,8 @@ public class AvailableActionsForG {
                     System.out.println("You don't have this item.");
                     break;
                 }
+            case "check wardrobe":
             case "open wardrobe":
-                System.out.println("You found a jacket inside the wardrobe.");
-                game.openWardrobe();
-                break;
             case "search wardrobe":
                 System.out.println("You found a jacket inside the wardrobe.");
                 game.openWardrobe();
@@ -44,6 +42,7 @@ public class AvailableActionsForG {
                 if (game.getBag().contains("chair")) {
                     if (game.getBag().contains("envelope")) {
                         System.out.println("There is nothing on top of the wardrobe");
+                        break;
                     } else {
                         System.out.println("You climb into the chair.\nYou found an envelope on top of the wardrobe.");
                         game.updateBag("envelope");
@@ -140,6 +139,16 @@ public class AvailableActionsForG {
                     System.out.println("Which Jacket?");
                     break;
                 }
+            case "get jacket":
+                if (game.getOpenWardrobe()) {
+                    System.out.println("Too small for you.\nBut it looks like there's something in it's pocket");
+                    break;
+                } else {
+                    System.out.println("Which Jacket?");
+                    break;
+                }
+            case "search pocket":
+            case "check pocket":
             case "search jacket":
                 if (game.getOpenWardrobe()) {
                     if (game.getBag().contains("can opener")) {
@@ -173,6 +182,8 @@ public class AvailableActionsForG {
                     System.out.println("You already pushed the wardrobe.");
                     return;
                 }
+            case "search vault":
+            case "check vault":
             case "open vault":
                 if (!game.getPushWadrobe()) {
                     System.out.println("I do not understand.\nPlease press 'i' to check your options.");

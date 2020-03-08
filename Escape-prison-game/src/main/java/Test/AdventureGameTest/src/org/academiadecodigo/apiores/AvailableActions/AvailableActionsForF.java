@@ -94,6 +94,7 @@ public class AvailableActionsForF {
                 }
 
             case "use flip flops":
+            case "try flip flops":
                 System.out.println("No need to use flip flops here.");
                 break;
             case "open flip flops":

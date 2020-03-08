@@ -7,12 +7,9 @@ public class AvailableActionsForC {
                 System.out.println("There's a calendar on the wall");
                 break;
             case "get calendar":
-                System.out.println("There's nothing to get");
-                break;
             case "use calendar":
                 System.out.println("Maybe you want to read what's in the calendar?");
                 break;
-
             case "check calendar":
                 System.out.println("It's a calendar from April 2020.\nThere's a red circle around day 17.\nI wonder what will happen in that day...");
                 break;

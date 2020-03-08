@@ -17,12 +17,15 @@ public class Client implements Runnable {
     private BufferedWriter writer;
     private String username;
     private Game game;
+    private String arr[];
+    String firstWord;
+    String theRest;
 
     public Client(String username, Game game) {
         this.username = username;
         this.game = game;
         try {
-            client = new Socket("192.168.1.110", 8020);
+            client = new Socket("192.168.1.110", 8000);
             ExecutorService executorService = Executors.newCachedThreadPool();
             executorService.submit(this);
             sendStartingMessage();
@@ -55,14 +58,14 @@ public class Client implements Runnable {
     }
    */
 
-    private void sendStartingMessage(){
+    private void sendStartingMessage() {
 
         try {
             writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
             reader = new BufferedReader(new InputStreamReader(System.in));
-                    writer.write(username + " has joined the server.");
-                    writer.newLine();
-                    writer.flush();
+            writer.write("INTRO " + username + " has joined the server.");
+            writer.newLine();
+            writer.flush();
         } catch (UnknownHostException ex) {
             ex.getMessage();
         } catch (IOException er) {
@@ -70,11 +73,11 @@ public class Client implements Runnable {
         }
     }
 
-    public void sendEndingMessage(){
+    public void sendEndingMessage() {
         try {
             writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
             reader = new BufferedReader(new InputStreamReader(System.in));
-            writer.write(username + " has escaped his cell. " + username + " WINS!");
+            writer.write("END " + username + " has escaped his cell. " + username + " WINS!");
             writer.newLine();
             writer.flush();
         } catch (UnknownHostException ex) {
@@ -91,11 +94,11 @@ public class Client implements Runnable {
             while (client.isBound()) {
                 String message = bufferedReader.readLine();
                 if (message != null) {
-                    if(message.equals("2nd_Player_Connected")){
+                    if (message.equals("2nd_Player_Connected")) {
                         game.gameStart();
-                    }else if(message.equals("Waiting for a second player.")){
-                       game.player1Connected();
-                    } else if(message.equals("The Server is full.")){
+                    } else if (message.equals("Waiting for a second player.")) {
+                        game.player1Connected();
+                    } else if (message.equals("The Server is full.")) {
                         try {
                             TimeUnit.SECONDS.sleep(1);
                         } catch (InterruptedException e) {
@@ -103,6 +106,13 @@ public class Client implements Runnable {
                         }
                         System.out.println("\nThe Server is full. You must wait for the current game to finish.");
                         System.exit(0);
+                    } else {
+                        arr = message.split(" ", 2);
+                        if (arr[0].equals("END")){
+                            String theRest = arr[1];
+                            System.out.println(theRest);
+                            game.gameClose();
+                        }
                     }
                 } else {
                     client.close();
@@ -113,7 +123,8 @@ public class Client implements Runnable {
         }
 
     }
-    public String input(){
+
+    public String input() {
         return scanner.next();
     }
 }

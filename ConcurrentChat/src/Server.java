@@ -9,6 +9,7 @@ import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.lang.*;
+import java.util.concurrent.TimeUnit;
 
 public class Server {
 
@@ -20,7 +21,7 @@ public class Server {
     public static void main(String[] args) {
         store = new ArrayList<>();
         Server server = new Server();
-        server.listen(8020);
+        server.listen(8000);
     }
 
     public void listen(int port) {
@@ -79,7 +80,23 @@ public class Server {
                         client.close();
                         return;
                     }
-                    System.out.println(c);
+                    String arr[] = c.split(" ", 2);
+                    String firstWord = arr[0];   //the
+                    String theRest = arr[1];
+                    if(firstWord.equals("INTRO")) {
+                        System.out.println(theRest);
+                    } else if(firstWord.equals("END")){
+                        System.out.println(theRest);
+                        for (int i = 0; i < store.size(); i++) {
+                            PrintWriter output = new PrintWriter(store.get(i).getOutputStream(), true);
+                            output.println(c);
+                            output.flush();
+                        }
+                        store.get(0).close();
+                        store.remove(0);
+                        store.get(1).close();
+                        store.remove(1);
+                    }
                 } while (true);
 
             } catch(Exception e){

@@ -177,6 +177,7 @@ public class Game {
     public void gameEnd(){
         gameEnd = true;
     }
+
     public void player1Connected() {
         player1Connected = true;
         try {
@@ -184,5 +185,9 @@ public class Game {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void gameClose(){
+        System.exit(0);
     }
 }

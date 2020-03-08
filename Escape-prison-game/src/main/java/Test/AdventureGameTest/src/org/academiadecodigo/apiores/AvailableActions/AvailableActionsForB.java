@@ -8,14 +8,19 @@ public class AvailableActionsForB {
         switch (command) {
             case "look":
                 System.out.println("There's a sink on the wall.\nYou may wash your hands!");
-                game.gameEnd();
                 break;
             case "wash hands":
             case "drink water":
             case "use sink":
+            case "check sink":
                 System.out.println("No running water.");
                 break;
+            case "Get sink":
+                System.out.println("We better leave the sink here in case\n" +
+                        "Jojó wants to fix it.");
+                break;
             case "open envelope":
+            case "check envelope":
                 if (game.getBag().contains("envelope")) {
                     if (!game.getOpenEnvelope()) {
                         System.out.println(Messages.ACTION_OPEN_ENVELOPE);
@@ -42,6 +47,22 @@ public class AvailableActionsForB {
             case "use key":
                 if (game.getBag().contains("key")) {
                     System.out.println(Messages.ACTION_CANT_USE_KEY);
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
+                    break;
+                }
+            case "check golden key":
+                if (game.getBag().contains("golden key")) {
+                    System.out.println(Messages.ACTION_CHECK_GOLDENKEY);
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
+                    break;
+                }
+            case "check key":
+                if (game.getBag().contains("key")) {
+                    System.out.println("It's just an old key.");
                     break;
                 } else {
                     System.out.println(Messages.ACTION_NO_KEY);

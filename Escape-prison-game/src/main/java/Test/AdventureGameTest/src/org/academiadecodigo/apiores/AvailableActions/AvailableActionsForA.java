@@ -14,12 +14,15 @@ public class AvailableActionsForA {
                     System.out.println("There's an old chair in front of you.");
                     break;
                 }
+            case "check chair":
+                System.out.println("It's just an old chair.");
+                break;
             case "get chair":
                 if (game.getBag().contains("chair")) {
                     System.out.println(Messages.ACTION_NOTHING_GET);
                     return;
                 } else {
-                    System.out.println("You got the chair.");
+                    System.out.println("You got the chair. It's now inside your bag.");
                     game.updateBag("chair");
                     break;
                 }
@@ -47,6 +50,7 @@ public class AvailableActionsForA {
                 System.out.println(Messages.ACTION_CANNOT);
                 break;
             case "open envelope":
+            case "check envelope":
                 if (game.getBag().contains("envelope")) {
                     if (!game.getOpenEnvelope()) {
                         System.out.println(Messages.ACTION_OPEN_ENVELOPE);
@@ -73,6 +77,22 @@ public class AvailableActionsForA {
             case "use key":
                 if (game.getBag().contains("key")) {
                     System.out.println(Messages.ACTION_CANT_USE_KEY);
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
+                    break;
+                }
+            case "check golden key":
+                if (game.getBag().contains("golden key")) {
+                    System.out.println(Messages.ACTION_CHECK_GOLDENKEY);
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
+                    break;
+                }
+            case "check key":
+                if (game.getBag().contains("key")) {
+                    System.out.println("It's just an old key.");
                     break;
                 } else {
                     System.out.println(Messages.ACTION_NO_KEY);

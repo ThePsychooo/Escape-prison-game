@@ -46,7 +46,8 @@ public class AvailableActionsForG {
                         System.out.println("There is nothing on top of the wardrobe.");
                         break;
                     } else {
-                        System.out.println("You climbed up on the chair.\nYou found an envelope on top of the wardrobe.");
+                        System.out.println("You climbed up on the chair.\nYou found an envelope on top of the wardrobe.\n" +
+                                "You put it inside your bag.");
                         game.updateBag("envelope");
                         return;
                     }
@@ -55,6 +56,7 @@ public class AvailableActionsForG {
                     return;
                 }
             case "open envelope":
+            case "check envelope":
                 if (game.getBag().contains("envelope")) {
                     if (!game.getOpenEnvelope()) {
                         System.out.println(Messages.ACTION_OPEN_ENVELOPE);
@@ -76,6 +78,22 @@ public class AvailableActionsForG {
                     return;
                 } else {
                     System.out.println(Messages.ACTION_NO_NEWSPAPER);
+                    break;
+                }
+            case "check key":
+                if (game.getBag().contains("key")) {
+                    System.out.println("It's just an old key.");
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
+                    break;
+                }
+            case "check golden key":
+                if (game.getBag().contains("golden key")) {
+                    System.out.println(Messages.ACTION_CHECK_GOLDENKEY);
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
                     break;
                 }
             case "read handwritten note":
@@ -121,8 +139,9 @@ public class AvailableActionsForG {
                 }
 
             case "use jacket":
+            case "check jacket":
                 if (game.getOpenWardrobe()) {
-                    System.out.println("Too small for you.\nBut it looks like there's something inside its pocket");
+                    System.out.println("Too small for you.\nBut it looks like there's something inside its pocket.");
                     break;
                 } else {
                     System.out.println("Which jacket?");
@@ -130,7 +149,7 @@ public class AvailableActionsForG {
                 }
             case "get jacket":
                 if (game.getOpenWardrobe()) {
-                    System.out.println("Too small for you.\nBut it looks like there's something inside its pocket");
+                    System.out.println("Too small for you.\nBut it looks like there's something inside its pocket.");
                     break;
                 } else {
                     System.out.println("Which jacket?");
@@ -139,12 +158,14 @@ public class AvailableActionsForG {
             case "search pocket":
             case "check pocket":
             case "search jacket":
+            case "check pockets":
+            case "search pockets":
                 if (game.getOpenWardrobe()) {
                     if (game.getBag().contains("can opener")) {
                         System.out.println("There is nothing special about this jacket.");
                         break;
                     } else {
-                        System.out.println("You found a can opener inside the jacket's pocket");
+                        System.out.println("You found a can opener inside the jacket's pocket.");
                         game.getBag().add("can opener");
                         break;
                     }

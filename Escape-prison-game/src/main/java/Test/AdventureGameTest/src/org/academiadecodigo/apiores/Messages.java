@@ -28,7 +28,7 @@ public class Messages {
 
     public final static String GAME_COMMANDS = "\nCOMMANDS:\n\nW - Go West\nN -" +
             " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +
-            "Read <Item>\nSearch <Item>\n\nIf you want to check these instructions again, use command 'i'.\n";
+            "Read <Item>\nSearch <Item>\n\nThere might be some other hidden commands that you need to use\nin order to progress in the game.\nIf you want to check these instructions again, use command 'i'.\n";
 
     public final static String GAME_USERNAME = "The game is about to start. How do you want to be called, prisoner?\n";
 
@@ -39,6 +39,18 @@ public class Messages {
     public final static String GAME_USERNAME_RITA = "Rita? I once had an MC with that name. She was crazy about pineapples!";
 
     public final static String GAME_USERNAME_RICARDO = "Ricardo? I once had an MC with that name. I bet he would complain about this game's design!";
+
+    public final static String GAME_USERNAME_XAVIER = "Xavier? I remember meeting a guy with that name who had the best taste in music.\n" +
+            "He is usually seen waiting for someone to open whatever door he wants to enter.";
+
+    public final static String GAME_USERNAME_FRANCISCO = "Francisco? I once knew a guy with that name who hacked a whole company.\n" +
+            "I bet he could hack you in a blink of an eye.";
+
+    public final static String GAME_USERNAME_BERNARDO = "Bernardo? I had a guy with that name on my class...\nHe was always coming up with mind-blowing theories!\n";
+
+    public final static String GAME_USERNAME_PAULO = "Paulo? I once knew a guy with that name who used to work for Capcom. He is very talented.";
+
+    public final static String GAME_USERNAME_EVANDRO = "Evandro? I once met a guy with that name in Salamanca... All the girls were crazy about him.";
 
     public final static String GAME_PATHETIC = " huh? What a pathetic name...";
 
@@ -81,7 +93,7 @@ public class Messages {
 
     public final static String ACTION_NOTHING_INTERESTING_FRONT = "Nothing interesting in front of you.";
 
-    public final static String ACTION_NOTHING_GET = "There's nothing to get";
+    public final static String ACTION_NOTHING_GET = "There's nothing to get.";
 
     public final static String ACTION_REST = "It's nice to get a good rest.";
 
@@ -111,7 +123,8 @@ public class Messages {
 
     public final static String ACTION_NOT_UNDERSTAND = "I do not understand.\nBe more specific or look again.\nMaybe you'd like to press 'i' to check your options.";
 
-    public final static String ACTION_OPEN_ENVELOPE = "There is a handwritten note and a key inside the envelope.";
+    public final static String ACTION_OPEN_ENVELOPE = "There is a handwritten note and a key inside the envelope.\n" +
+            "You put the items inside your bag.";
 
     public final static String ACTION_OPENED_ENVELOPE = "The envelope has already been opened.";
 
@@ -138,27 +151,9 @@ public class Messages {
 
     public final static String ACTION_CALENDAR_MSG = "It's a calendar from April 2020.\nThere's a red circle around day 17.\nI wonder what will happen on that day...";
 
-    public final static String ACTION_YOU_WIN = "▓██   ██▓ ▒█████   █    ██     █     █░ ██▓ ███▄    █  ▐██▌ \n" +
-            " ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▓█░ █ ░█░▓██▒ ██ ▀█   █  ▐██▌ \n" +
-            "  ▒██ ██░▒██░  ██▒▓██  ▒██░   ▒█░ █ ░█ ▒██▒▓██  ▀█ ██▒ ▐██▌ \n" +
-            "  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ░█░ █ ░█ ░██░▓██▒  ▐▌██▒ ▓██▒ \n" +
-            "  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░░██▒██▓ ░██░▒██░   ▓██░ ▒▄▄  \n" +
-            "   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒    ░ ▓░▒ ▒  ░▓  ░ ▒░   ▒ ▒  ░▀▀▒ \n" +
-            " ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░      ▒ ░ ░   ▒ ░░ ░░   ░ ▒░ ░  ░ \n" +
-            " ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░      ░   ░   ▒ ░   ░   ░ ░     ░ \n" +
-            " ░ ░         ░ ░     ░            ░     ░           ░  ░    \n" +
-            " ░ ░ ";
+    public final static String ACTION_CHECK_GOLDENKEY = "The key to success is to focus our conscious mind on things we desire not things we fear.\n";
 
-    public final static String ACTION_YOU_LOSE = "▓██   ██▓ ▒█████   █    ██     ██▓     ▒█████    ██████ ▓█████                \n" +
-            " ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▓██▒    ▒██▒  ██▒▒██    ▒ ▓█   ▀                \n" +
-            "  ▒██ ██░▒██░  ██▒▓██  ▒██░   ▒██░    ▒██░  ██▒░ ▓██▄   ▒███                  \n" +
-            "  ░ ▐██▓░▒██   ██░▓▓█  ░██░   ▒██░    ▒██   ██░  ▒   ██▒▒▓█  ▄                \n" +
-            "  ░ ██▒▓░░ ████▓▒░▒▒█████▓    ░██████▒░ ████▓▒░▒██████▒▒░▒████▒ ██▓  ██▓  ██▓ \n" +
-            "   ██▒▒▒ ░ ▒░▒░▒░ ░▒▓▒ ▒ ▒    ░ ▒░▓  ░░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░░░ ▒░ ░ ▒▓▒  ▒▓▒  ▒▓▒ \n" +
-            " ▓██ ░▒░   ░ ▒ ▒░ ░░▒░ ░ ░    ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░▒  ░ ░ ░ ░  ░ ░▒   ░▒   ░▒  \n" +
-            " ▒ ▒ ░░  ░ ░ ░ ▒   ░░░ ░ ░      ░ ░   ░ ░ ░ ▒  ░  ░  ░     ░    ░    ░    ░   \n" +
-            " ░ ░         ░ ░     ░            ░  ░    ░ ░        ░     ░  ░  ░    ░    ░  \n" +
-            " ░ ░                                                             ░    ░    ░ ";
+
 
 }
 

@@ -7,10 +7,11 @@ public class AvailableActionsForD {
     public static void checkActions(String command, Game game) {
         switch (command) {
             case "look":
-                System.out.println("There are lines on the wall.\nIt looks like they were used to count the weeks.\nMaybe you want to count them?");
+                System.out.println("There are lines on the wall.\nIt looks like they were used to count the weeks.\nMaybe you want to count them.");
                 break;
             case "get lines":
                 System.out.println(Messages.ACTION_CANNOT);
+                break;
             case "use lines":
                 System.out.println(Messages.ACTION_CANNOT);
                 break;
@@ -34,6 +35,7 @@ public class AvailableActionsForD {
                     break;
                 }
             case "open envelope":
+            case "check envelope":
                 if (game.getBag().contains("envelope")) {
                     if (!game.getOpenEnvelope()) {
                         System.out.println(Messages.ACTION_OPEN_ENVELOPE);
@@ -83,6 +85,7 @@ public class AvailableActionsForD {
                     break;
                 }
             case "read lines":
+            case "check lines":
                 System.out.println("It would be better to count them.");
                 break;
             case "count lines":
@@ -99,6 +102,22 @@ public class AvailableActionsForD {
                     break;
                 }else{
                     System.out.println(Messages.ACTION_NO_ITEM);
+                    break;
+                }
+            case "check key":
+                if (game.getBag().contains("key")) {
+                    System.out.println("It's just an old key.");
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
+                    break;
+                }
+            case "check golden key":
+                if (game.getBag().contains("golden key")) {
+                    System.out.println(Messages.ACTION_CHECK_GOLDENKEY);
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
                     break;
                 }
             case "check bag":

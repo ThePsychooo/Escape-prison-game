@@ -43,6 +43,16 @@ public class Game {
             System.out.println(Messages.GAME_USERNAME_RICARDO);
         } else if (username.toLowerCase().equals("soraia")){
             System.out.println(Messages.GAME_USERNAME_SORAIA);
+        } else if (username.toLowerCase().equals("bernardo")){
+            System.out.println(Messages.GAME_USERNAME_BERNARDO);
+        } else if (username.toLowerCase().equals("francisco")){
+            System.out.println(Messages.GAME_USERNAME_FRANCISCO);
+        } else if (username.toLowerCase().equals("xavier")){
+            System.out.println(Messages.GAME_USERNAME_XAVIER);
+        } else if (username.toLowerCase().equals("evandro")){
+            System.out.println(Messages.GAME_USERNAME_EVANDRO);
+        } else if (username.toLowerCase().equals("paulo")){
+            System.out.println(Messages.GAME_USERNAME_PAULO);
         } else {
             System.out.println("\n" + username + Messages.GAME_PATHETIC);
         }

@@ -18,6 +18,7 @@ public class AvailableActionsForI {
                 System.out.println(Messages.ACTION_CANNOT);
                 break;
             case "open door":
+            case "unlock door":
                 if(game.getOpenDoor()){
                     System.out.println("The door is already open.");
                     break;
@@ -63,6 +64,7 @@ public class AvailableActionsForI {
                     break;
                 }
             case "open envelope":
+            case "check envelope":
                 if (game.getBag().contains("envelope")) {
                     if (!game.getOpenEnvelope()) {
                         System.out.println(Messages.ACTION_OPEN_ENVELOPE);
@@ -76,6 +78,22 @@ public class AvailableActionsForI {
                     }
                 }   else {
                     System.out.println(Messages.ACTION_NO_ENVELOPE);
+                    break;
+                }
+            case "check key":
+                if (game.getBag().contains("key")) {
+                    System.out.println("It's just an old key.");
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
+                    break;
+                }
+            case "check golden key":
+                if (game.getBag().contains("golden key")) {
+                    System.out.println(Messages.ACTION_CHECK_GOLDENKEY);
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
                     break;
                 }
             case "read handwritten note":

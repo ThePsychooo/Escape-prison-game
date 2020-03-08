@@ -40,7 +40,8 @@ public class AvailableActionsForH {
                     System.out.println("There is nothing else on the mattress.");
                     break;
                 }else {
-                    System.out.println("Interesting... you found an old newspaper from the future under it.");
+                    System.out.println("Interesting... you found an old newspaper from the future under it.\n" +
+                            "You put the newspaper inside the bag.");
                     game.updateBag("newspaper");
                     break;
                 }
@@ -53,6 +54,7 @@ public class AvailableActionsForH {
                     break;
                 }
             case "open envelope":
+            case "check envelope":
                 if (game.getBag().contains("envelope")) {
                     if (!game.getOpenEnvelope()) {
                         System.out.println(Messages.ACTION_OPEN_ENVELOPE);
@@ -66,6 +68,22 @@ public class AvailableActionsForH {
                     }
                 }   else {
                     System.out.println(Messages.ACTION_NO_ENVELOPE);
+                    break;
+                }
+            case "check key":
+                if (game.getBag().contains("key")) {
+                    System.out.println("It's just an old key.");
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
+                    break;
+                }
+            case "check golden key":
+                if (game.getBag().contains("golden key")) {
+                    System.out.println(Messages.ACTION_CHECK_GOLDENKEY);
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
                     break;
                 }
             case "read handwritten note":

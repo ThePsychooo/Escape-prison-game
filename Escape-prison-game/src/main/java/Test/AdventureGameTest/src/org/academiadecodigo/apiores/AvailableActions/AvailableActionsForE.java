@@ -24,6 +24,7 @@ public class AvailableActionsForE {
                 System.out.println(Messages.ACTION_CANNOT);
                 break;
             case "open envelope":
+            case "check envelope":
                 if (game.getBag().contains("envelope")) {
                     if (!game.getOpenEnvelope()) {
                         System.out.println(Messages.ACTION_OPEN_ENVELOPE);
@@ -45,6 +46,22 @@ public class AvailableActionsForE {
                     break;
                 } else {
                     System.out.println(Messages.ACTION_NO_NOTE);
+                    break;
+                }
+            case "check key":
+                if (game.getBag().contains("key")) {
+                    System.out.println("It's just an old key.");
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
+                    break;
+                }
+            case "check golden key":
+                if (game.getBag().contains("golden key")) {
+                    System.out.println(Messages.ACTION_CHECK_GOLDENKEY);
+                    break;
+                } else {
+                    System.out.println(Messages.ACTION_NO_KEY);
                     break;
                 }
             case "check flip flops":

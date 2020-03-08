@@ -7,7 +7,6 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.lang.*;
@@ -76,12 +75,6 @@ public class Server {
 
             do {
                 String c = input.readLine();
-                if (c.equals("/quit")) {
-                    System.out.println("disconnecting");
-                    store.remove(client);
-                    client.close();
-                    return;
-                }
                 String arr[] = c.split(" ", 2);
                 String firstWord = arr[0];   //the
                 String theRest = arr[1];
@@ -97,9 +90,6 @@ public class Server {
                     store.get(1).close();
                     store.clear();
                     player1Joined = false;
-
-
-
                 }
 
             } while (true);

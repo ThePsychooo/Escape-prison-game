@@ -1,5 +1,9 @@
 package Test.AdventureGameTest.src.org.academiadecodigo.apiores.AvailableActions;
+import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Commands.EasterEggs;
 import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Game;
+
+import java.util.concurrent.TimeUnit;
+
 public class AvailableActionsForH {
     public static void checkActions(String command, Game game) {
         switch (command) {
@@ -117,6 +121,9 @@ public class AvailableActionsForH {
                     System.out.println("You do not have this item");
                     break;
                 }
+            case "wank":
+                EasterEggs.wank();
+                break;
             case "check bag":
                 if(game.getBag().isEmpty()){
                     System.out.println("Your bag is Empty.");

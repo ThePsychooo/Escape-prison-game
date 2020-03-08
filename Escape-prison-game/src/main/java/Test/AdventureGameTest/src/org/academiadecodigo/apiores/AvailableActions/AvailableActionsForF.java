@@ -1,4 +1,5 @@
 package Test.AdventureGameTest.src.org.academiadecodigo.apiores.AvailableActions;
+import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Commands.EasterEggs;
 import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Game;
 public class AvailableActionsForF {
     public static void checkActions(String command, Game game) {
@@ -115,6 +116,9 @@ public class AvailableActionsForF {
                     System.out.println(game.getBag().toString());
                     break;
                 }
+            case "wank":
+                EasterEggs.wank();
+                break;
             case "i":
                 System.out.println("\nCOMMANDS:\n\nW - Go West\nN -" +
                         " Go North\nS - Go South\nE - Go East\n\nLook\nCheck Bag\nGet <Item>\nUse <Item>\nOpen <Item>\n" +

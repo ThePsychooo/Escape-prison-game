@@ -56,7 +56,13 @@ public class Game {
         String username = prompt.getUserInput(usernameInput);
         client = new Client(username, this);
         if (username.toLowerCase().equals("jojo")){
-            System.out.println("Jojo? I once had and MC with that name. I prefer not to remember those days...");
+            System.out.println("Jojo? I once had an MC with that name. I prefer not to remember those days...");
+        } else if (username.toLowerCase().equals("rita")){
+            System.out.println("Rita? I once had an MC with that name. She was crazy about pineapples!");
+        } else if (username.toLowerCase().equals("ricardo")){
+            System.out.println("Ricardo? I once had an MC with that name. I bet he would complain about this game's design!");
+        } else if (username.toLowerCase().equals("soraia")){
+            System.out.println("Soraia? I once had an MC with that name. Maybe she could explain how this game works.");
         } else {
             System.out.println("\n" + username + " Huh? What a pathetic name...");
         }

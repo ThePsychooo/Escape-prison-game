@@ -1,5 +1,9 @@
 package Test.AdventureGameTest.src.org.academiadecodigo.apiores.AvailableActions;
+import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Commands.EasterEggs;
 import Test.AdventureGameTest.src.org.academiadecodigo.apiores.Game;
+
+import java.util.concurrent.TimeUnit;
+
 public class AvailableActionsForI {
     public static void checkActions(String command, Game game) {
         switch (command) {
@@ -33,6 +37,9 @@ public class AvailableActionsForI {
                     System.out.println("You don't have this item.");
                     break;
                 }
+            case "wank":
+                EasterEggs.wank();
+                break;
             case "read newspaper":
                 if (game.getBag().contains("newspaper")) {
                     System.out.println("THE END IS NEAR!\n" +

@@ -21,19 +21,20 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Test.AdventureGameTest.src.org.academiadecodigo.apiores.Main</mainClass>
+                            <mainClass>org.academiadecodigo.apiores.Server</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
             <plugin>
+
                 <artifactId>maven-assembly-plugin</artifactId>
                 <groupId>org.apache.maven.plugins</groupId>
                 <version>2.6</version>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Test.AdventureGameTest.src.org.academiadecodigo.apiores.Main</mainClass>
+                            <mainClass>org.academiadecodigo.apiores.Server</mainClass>
                         </manifest>
                         <descriptorRefs>
                             <descriptorRef>jar-with-dependencies</descriptorRef>

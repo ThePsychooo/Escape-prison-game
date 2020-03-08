@@ -14,6 +14,7 @@
             <version>0.2.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -23,16 +24,7 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>Test.AdventureGameTest.src.org.academiadecodigo.apiores.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
+
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -42,17 +34,21 @@
                         <manifest>
                             <mainClass>Test.AdventureGameTest.src.org.academiadecodigo.apiores.Main</mainClass>
                         </manifest>
+                    </archive>
                         <descriptorRefs>
                             <descriptorRef>jar-with-dependencies</descriptorRef>
                         </descriptorRefs>
-                    </archive>
                 </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -5,6 +5,7 @@ import org.academiadecodigo.bootcamp.scanners.string.StringInputScanner;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 public class Game {
 
@@ -18,6 +19,8 @@ public class Game {
     private boolean openVault = false;
     private Client client;
     private boolean gameStart = false;
+    private boolean gameEnd = false;
+    private boolean player1Connected = false;
 
     public void init() {
 
@@ -55,15 +58,23 @@ public class Game {
         if (username.toLowerCase().equals("jojo")){
             System.out.println("Jojo? I once had and MC with that name. I prefer not to remember those days...");
         } else {
-            System.out.println(username + " huh? What a pathetic name...");
+            System.out.println("\n" + username + " Huh? What a pathetic name...");
         }
 
         while (true) {
             try {
-                wait(1000);
-            }catch (Exception e) {
+                TimeUnit.SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            if(player1Connected){
+                System.out.println("\nYou are now connected to the server. Waiting for player 2.");
+                player1Connected = false;
             }
             if(gameStart) {
+                if (gameEnd){
+                    client.sendEndingMessage();
+                }
                 StringInputScanner commandInput = new StringInputScanner();
                 commandInput.setMessage("\nCommand:\n");
                 String command = prompt.getUserInput(commandInput).toLowerCase();
@@ -130,6 +141,48 @@ public class Game {
     }
 
     public void gameStart(){
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\nThe game will start in...");
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n3");
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n2");
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n1");
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\nESCAPE OR DIE!");
         gameStart = true;
+    }
+
+    public void gameEnd(){
+        gameEnd = true;
+    }
+    public void player1Connected() {
+        player1Connected = true;
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

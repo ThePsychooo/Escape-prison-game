@@ -117,6 +117,7 @@ public class AvailableActionsForI {
                 } else {
                     if (game.getBag().contains("flip flops")) {
                         System.out.println("You are free!\nCongrats! You made it!");
+                        game.gameEnd();
                         break;
                     } else {
                         System.out.println("Are you sure you want to step outside on your bare feet?");
@@ -139,6 +140,7 @@ public class AvailableActionsForI {
                 } else {
                     if (game.getBag().contains("flip flops")) {
                         System.out.println("You are free!\nCongrats! You made it!");
+                        game.gameEnd();
                         break;
                     } else {
                         System.out.println("Are you sure you want to step outside on your bare feet?");
@@ -152,6 +154,7 @@ public class AvailableActionsForI {
                 } else {
                     if (game.getBag().contains("flip flops")) {
                         System.out.println("You are free!\nCongrats! You made it!");
+                        game.gameEnd();
                         break;
                     } else {
                         System.out.println("Are you sure you want to step outside on your bare feet?");

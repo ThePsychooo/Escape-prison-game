@@ -5,6 +5,7 @@ public class AvailableActionsForB {
         switch (command) {
             case "look":
                 System.out.println("There's a sink in the wall.\nYou may wash your hands!");
+                game.gameEnd();
                 break;
             case "wash hands":
             case "drink water":

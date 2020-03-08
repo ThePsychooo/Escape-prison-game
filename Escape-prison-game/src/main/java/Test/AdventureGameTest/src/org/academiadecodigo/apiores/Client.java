@@ -69,6 +69,20 @@ public class Client implements Runnable {
         }
     }
 
+    public void sendEndingMessage(){
+        try {
+            writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+            reader = new BufferedReader(new InputStreamReader(System.in));
+            writer.write(username + " has escaped his cell. " + username + " WINS!");
+            writer.newLine();
+            writer.flush();
+        } catch (UnknownHostException ex) {
+            ex.getMessage();
+        } catch (IOException er) {
+            er.getMessage();
+        }
+    }
+
     @Override
     public void run() {
         try {
@@ -76,10 +90,10 @@ public class Client implements Runnable {
             while (client.isBound()) {
                 String message = bufferedReader.readLine();
                 if (message != null) {
-                    System.out.println(message);
                     if(message.equals("2nd_Player_Connected")){
-                        System.out.println("Teste connected");
                         game.gameStart();
+                    }else if(message.equals("Waiting for a second player.")){
+                       game.player1Connected();
                     }
                 } else {
                     client.close();

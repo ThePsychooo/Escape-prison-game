@@ -49,7 +49,6 @@ public class Server {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 if (store.size() == 2) {
-                    System.out.println(store.size());
                     for (int i = 0; i < store.size(); i++) {
                         PrintWriter output = new PrintWriter(store.get(i).getOutputStream(), true);
                         output.println("2nd_Player_Connected");

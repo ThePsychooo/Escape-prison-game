@@ -48,37 +48,36 @@ public class Server {
     public void solvingConnection(Socket client) {
         try {
             BufferedReader input = new BufferedReader(new InputStreamReader(client.getInputStream()));
-
-            if (store.size() == 2) {
-                System.out.println(store.size());
-                for (int i = 0; i < store.size(); i++) {
-                    PrintWriter output = new PrintWriter(store.get(i).getOutputStream(), true);
-                    output.println("CARALHOOOOOOO");
+                if (store.size() == 2) {
+                    System.out.println(store.size());
+                    for (int i = 0; i < store.size(); i++) {
+                        PrintWriter output = new PrintWriter(store.get(i).getOutputStream(), true);
+                        output.println("2nd_Player_Connected");
+                        output.flush();
+                    }
+                }
+                if (!player1Joined) {
+                    System.out.println(store.size());
+                    PrintWriter output = new PrintWriter(store.get(0).getOutputStream(), true);
+                    output.println("Waiting for a second player.");
+                    player1Joined = true;
                     output.flush();
                 }
-            }
-            if (!player1Joined) {
-                System.out.println(store.size());
-                PrintWriter output = new PrintWriter(store.get(0).getOutputStream(), true);
-                output.println("Waiting for a second player.");
-                player1Joined = true;
-                output.flush();
-            }
-            do {
-                String c = input.readLine();
-                if (c.equals("/quit")) {
-                    System.out.println("disconnecting");
-                    store.remove(client);
-                    client.close();
-                    return;
-                }
-                System.out.println(c);
-            } while (true);
 
-        } catch (Exception e) {
-            e.getMessage();
-        }
+                do {
+                    String c = input.readLine();
+                    if (c.equals("/quit")) {
+                        System.out.println("disconnecting");
+                        store.remove(client);
+                        client.close();
+                        return;
+                    }
+                    System.out.println(c);
+                } while (true);
 
+            } catch(Exception e){
+                e.getMessage();
+            }
     }
 
     class socketThread implements Runnable {

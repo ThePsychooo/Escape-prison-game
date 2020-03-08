@@ -51,27 +51,31 @@ public class Game {
         StringInputScanner usernameInput = new StringInputScanner();
         usernameInput.setMessage("The game is about to start. How do you want to be called prisoner?\n");
         String username = prompt.getUserInput(usernameInput);
-        client = new Client(username);
+        client = new Client(username, this);
         if (username.toLowerCase().equals("jojo")){
             System.out.println("Jojo? I once had and MC with that name. I prefer not to remember those days...");
         } else {
             System.out.println(username + " huh? What a pathetic name...");
         }
 
+        while (true) {
+            try {
+                wait(1000);
+            }catch (Exception e) {
+            }
+            if(gameStart) {
+                StringInputScanner commandInput = new StringInputScanner();
+                commandInput.setMessage("\nCommand:\n");
+                String command = prompt.getUserInput(commandInput).toLowerCase();
 
+                if (Directions.GO_NORTH.getInput().equals(command) || Directions.GO_SOUTH.getInput().equals(command) ||
 
-        while (gameStart) {
-            StringInputScanner commandInput = new StringInputScanner();
-            commandInput.setMessage("\nCommand:\n");
-            String command = prompt.getUserInput(commandInput).toLowerCase();
-
-            if (Directions.GO_NORTH.getInput().equals(command) || Directions.GO_SOUTH.getInput().equals(command) ||
-
-                    Directions.GO_EAST.getInput().equals(command) ||
-                    Directions.GO_WEST.getInput().equals(command)) {
-                playerPosition.updatePosition(command);
-            } else {
-                cellVerification.verify(command, playerPosition, this);
+                        Directions.GO_EAST.getInput().equals(command) ||
+                        Directions.GO_WEST.getInput().equals(command)) {
+                    playerPosition.updatePosition(command);
+                } else {
+                    cellVerification.verify(command, playerPosition, this);
+                }
             }
         }
     }
@@ -123,5 +127,9 @@ public class Game {
 
     public void openVault(){
         openVault = true;
+    }
+
+    public void gameStart(){
+        gameStart = true;
     }
 }

@@ -15,9 +15,11 @@ public class Client implements Runnable {
     private BufferedReader reader;
     private BufferedWriter writer;
     private String username;
+    private Game game;
 
-    public Client(String username) {
+    public Client(String username, Game game) {
         this.username = username;
+        this.game = game;
         try {
             client = new Socket("192.168.1.105", 8020);
             ExecutorService executorService = Executors.newCachedThreadPool();
@@ -75,6 +77,10 @@ public class Client implements Runnable {
                 String message = bufferedReader.readLine();
                 if (message != null) {
                     System.out.println(message);
+                    if(message.equals("2nd_Player_Connected")){
+                        System.out.println("Teste connected");
+                        game.gameStart();
+                    }
                 } else {
                     client.close();
                 }

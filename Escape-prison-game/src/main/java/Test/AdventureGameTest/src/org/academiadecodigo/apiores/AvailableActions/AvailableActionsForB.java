@@ -15,7 +15,7 @@ public class AvailableActionsForB {
             case "check sink":
                 System.out.println("No running water.");
                 break;
-            case "Get sink":
+            case "get sink":
                 System.out.println("We better leave the sink here in case\n" +
                         "Jojó wants to fix it.");
                 break;

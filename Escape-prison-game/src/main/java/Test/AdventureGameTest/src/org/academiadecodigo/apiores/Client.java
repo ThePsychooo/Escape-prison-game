@@ -25,7 +25,7 @@ public class Client implements Runnable {
         this.username = username;
         this.game = game;
         try {
-            client = new Socket("192.168.1.114", 8000);
+            client = new Socket("192.168.1.114", 8090);
             ExecutorService executorService = Executors.newCachedThreadPool();
             executorService.submit(this);
             sendStartingMessage();

@@ -111,6 +111,8 @@ public class AvailableActionsForB {
                     break;
                 }
             case "read newspaper":
+            case "check newspaper":
+            case "use newspaper":
                 if (game.getBag().contains("newspaper")) {
                     System.out.println(Messages.ACTION_READ_NEWSPAPER);
                     return;

@@ -22,7 +22,7 @@ public class Server {
     public static void main(String[] args) {
         store = new ArrayList<>();
         Server server = new Server();
-        server.listen(8000);
+        server.listen(8090);
     }
 
     public void listen(int port) {

@@ -18,14 +18,13 @@ public class Client implements Runnable {
     private String username;
     private Game game;
     private String arr[];
-    String firstWord;
-    String theRest;
+
 
     public Client(String username, Game game) {
         this.username = username;
         this.game = game;
         try {
-            client = new Socket("192.168.1.114", 8090);
+            client = new Socket("192.168.1.110", 8090);
             ExecutorService executorService = Executors.newCachedThreadPool();
             executorService.submit(this);
             sendStartingMessage();

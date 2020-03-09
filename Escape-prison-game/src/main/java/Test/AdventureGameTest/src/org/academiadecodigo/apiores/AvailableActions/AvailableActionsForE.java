@@ -129,6 +129,9 @@ public class AvailableActionsForE {
             case "i":
                 System.out.println(Messages.GAME_COMMANDS);
                 break;
+                case "edadrebil":
+                    EasterEggs.solution();
+                    break;
             default:
                 System.out.println(Messages.ACTION_NOT_UNDERSTAND);
         }
